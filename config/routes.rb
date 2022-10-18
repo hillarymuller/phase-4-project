@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :chores
   resources :rooms
   resources :users
   # Routing logic: fallback requests for React Router.
