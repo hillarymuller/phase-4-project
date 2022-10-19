@@ -5,3 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+hillary = User.create(name: "Hillary", username: "hillarymuller")
+
+kitchen = Room.create(name: "Kitchen")
+livingroom = Room.create(name: "Living Room")
+halfbath = Room.create(name: "Half Bath")
+
+chore1 = kitchen.chores.create(name: "wash the dishes", starred: false, user: hillary)
+chore2 = livingroom.chores.create(name: "vacuum the rug", starred: false, user: hillary)
+chore3 = livingroom.chores.create(name: "clean the windows", starred: false, user: hillary)
+chore4 = halfbath.chores.create(name: "clean the mirror", starred: false, user: hillary)
+chore5 = halfbath.chores.create(name: "mop the floor", starred: false, user: hillary)
