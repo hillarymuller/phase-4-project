@@ -1,5 +1,12 @@
 import {BrowserRouteer as Router, Route, Switch} from 'react-router-dom';
 import './App.css';
+import Home from './Home';
+import NavBar from './NavBar';
+import LoginForm from './LoginForm';
+import NewChoreForm from './NewChoreForm';
+import RoomCard from './RoomCard';
+import RoomsContainer from './RoomsContainer';
+import SignupForm from './SignupForm';
 
 function App() {
   return (
