@@ -13,11 +13,18 @@ function App() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    fetch('/me')
+    fetch('/me', {
+      headers: {
+        "accepts": "application/json"
+      }
+    })
     .then(resp => {
       if (resp.ok) {
         resp.json()
         .then(user => setUser(user));
+      }
+      else {
+        console.log("No current user")
       }
     });
   },[]);
@@ -30,7 +37,7 @@ function App() {
     <div>
       <h2>Household Chores</h2>
       <Router>
-        <NavBar />
+        <NavBar user={user} />
         <Switch>
           <Route path="/chores/new">
             <NewChoreForm />
@@ -48,7 +55,7 @@ function App() {
             <LoginForm handleLogin={handleLogin} />
           </Route>
           <Route path="/signup">
-            <SignupForm />
+            <SignupForm handleLogin={handleLogin} />
           </Route>
           <Route path="/">
             <Home />
