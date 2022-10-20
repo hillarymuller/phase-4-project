@@ -1,4 +1,4 @@
-import {BrowserRouteer as Router, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import './App.css';
 import Home from './Home';
 import NavBar from './NavBar';
@@ -7,8 +7,25 @@ import NewChoreForm from './NewChoreForm';
 import RoomCard from './RoomCard';
 import RoomsContainer from './RoomsContainer';
 import SignupForm from './SignupForm';
+import React, {useEffect, useState} from 'react';
 
 function App() {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    fetch('/me')
+    .then(resp => {
+      if (resp.ok) {
+        resp.json()
+        .then(user => setUser(user));
+      }
+    });
+  },[]);
+
+  function handleLogin(user) {
+    setUser(user);
+  }
+
   return (
     <div>
       <h2>Household Chores</h2>
@@ -28,7 +45,7 @@ function App() {
             <RoomsContainer />
           </Route>
           <Route path="/login">
-            <LoginForm />
+            <LoginForm handleLogin={handleLogin} />
           </Route>
           <Route path="/signup">
             <SignupForm />
