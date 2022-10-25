@@ -1,8 +1,15 @@
 import React from 'react';
 
-function RoomCard() {
+function RoomCard({ room }) {
+    const { name, chores } = room;
+
+    console.log(room);
     return (
-        <h2>RoomCard</h2>
+        <div>
+            <h2>{name}</h2>
+            <h4>{chores}</h4>
+        </div>
+       
      )
 }
 

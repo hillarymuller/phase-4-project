@@ -1,8 +1,16 @@
 import React from 'react';
+import RoomCard from './RoomCard';
 
-function RoomsList() {
+function RoomsList({ rooms }) {
+console.log(rooms);
+const roomCards = rooms.map(room => <RoomCard room={room} key={room.id} />)
     return (
-        <h2>RoomsList</h2>
+    
+        <div>
+            <h2>Rooms</h2>
+            {roomCards}
+           
+        </div>
      )
 }
 

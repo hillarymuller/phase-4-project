@@ -25,7 +25,7 @@ function NavBar({user, handleLogout}) {
 </> ) : (
     <>
         <NavLink to='/rooms'>
-            Rooms to Clean
+            All Chores
             </NavLink>
             <NavLink to="/signup">
                 Sign Up

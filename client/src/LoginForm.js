@@ -1,10 +1,12 @@
 import React, {useState} from 'react';
+import { useHistory } from 'react-router-dom';
 
 function LoginForm({ handleLogin }) {
 const [formData, setFormData] = useState({
     username: "",
     password: ""
 });
+const history = useHistory();
 
     function handleChange(e){
         setFormData({...formData, [e.target.name]: e.target.value,})
@@ -29,6 +31,7 @@ const [formData, setFormData] = useState({
                 .then(user => console.log(user))
                 .then(user => handleLogin(user))
                 .catch(error => console.log(error))
+                .then(() => history.push('/rooms'))
             }
         });
     }
