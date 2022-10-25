@@ -2,7 +2,7 @@ import React from 'react';
 import {NavLink} from 'react-router-dom';
 
 
-function NavBar({user}) {
+function NavBar({user, handleLogout}) {
  return (
     <div>
         <NavLink 
@@ -19,6 +19,9 @@ function NavBar({user}) {
         to='/chores/new'>
             Add New Chore
         </NavLink>
+        <button onClick={handleLogout}>
+            Logout
+        </button>
 </> ) : (
     <>
         <NavLink to='/rooms'>

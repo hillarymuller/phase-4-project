@@ -29,15 +29,18 @@ function App() {
     });
   },[]);
 
-  function handleLogin(user) {
-    setUser(user);
+function handleLogin(user) {
+  setUser(user);
+}
+  function handleLogout() {
+    setUser(null);
   }
 
   return (
     <div>
       <h2>Household Chores</h2>
       <Router>
-        <NavBar user={user} />
+        <NavBar user={user} handleLogout={handleLogout} />
         <Switch>
           <Route path="/chores/new">
             <NewChoreForm />
