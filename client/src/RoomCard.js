@@ -19,7 +19,7 @@ function RoomCard({ room }) {
     }
 const choreList = chores.map(chore => 
 <li key={chore.id}>
-    {chore.name} <button onClick={() => handleStar(chore)}>{chore.starred ? "★" : "☆"}</button></li>)
+    {chore.name} -- {chore.user.name} <button onClick={() => handleStar(chore)}>{chore.starred ? "★" : "☆"}</button></li>)
     console.log(room);
     return (
         <div>

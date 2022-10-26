@@ -1,7 +1,9 @@
 import React, {useState} from 'react';
+import {useHistory} from 'react-router-dom';
 
 
 function NewChoreForm({ rooms }) {
+    const history = useHistory();
     const [formData, setFormData] = useState({
         name: "",
         starred: false,
@@ -10,10 +12,27 @@ function NewChoreForm({ rooms }) {
     function handleChange(e) {
         setFormData({...formData, [e.target.name]: e.target.value,});
     }
+    function handleSubmit(e) {
+        e.preventDefault();
+        fetch('/chores', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                "name": formData.name,
+                "starred": formData.starred,
+                "room_id": formData.roomId
+            })
+        })
+        .then(r => r.json())
+        .then(data => console.log(data))
+        .then(() => history.push('/user/:id'))
+    }
     return (
         <div>
             <h2>Add New Chore</h2>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <label>
                     Chore:
                     <input onChange={handleChange}
