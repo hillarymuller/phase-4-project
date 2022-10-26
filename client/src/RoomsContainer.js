@@ -4,22 +4,30 @@ import RoomsList from './RoomsList';
 
 function RoomsContainer() {
     const [rooms, setRooms] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('/rooms')
-        .then(r => r.json())
-        .then(data => console.log(data))
-        .then(data => setRooms(data))
-        .catch(error => console.log(error))
+        const fetchRooms = async () => {
+            try {
+                const resp = await fetch('/rooms')
+                const data = await resp.json()
+                setRooms(data)
+                setLoading(false)
+                console.log(data)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        fetchRooms();
     }, []);
 
-
+if (loading) return <h2>Loading Rooms...</h2>
     return (
         <div>
             <h2>Rooms</h2>
-            <>
-            {!rooms ? (<h2>Loading...</h2>) : (<RoomsList rooms={rooms} />)}
-            </>
+        
+            <RoomsList rooms={rooms} />
+            
        </div>
      )
 }
