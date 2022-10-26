@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import RoomsList from './RoomsList';
+import NewChoreForm from './NewChoreForm';
 
 
 function RoomsContainer() {
@@ -25,7 +26,7 @@ if (loading) return <h2>Loading Rooms...</h2>
     return (
         <div>
             <h2>Rooms</h2>
-        
+            <NewChoreForm rooms={rooms} />
             <RoomsList rooms={rooms} />
             
        </div>

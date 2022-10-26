@@ -3,7 +3,7 @@ import './App.css';
 import Home from './Home';
 import NavBar from './NavBar';
 import LoginForm from './LoginForm';
-import NewChoreForm from './NewChoreForm';
+
 import RoomCard from './RoomCard';
 import RoomsContainer from './RoomsContainer';
 import SignupForm from './SignupForm';
@@ -42,9 +42,7 @@ function handleLogin(user) {
       <Router>
         <NavBar user={user} handleLogout={handleLogout} />
         <Switch>
-          <Route path="/chores/new">
-            <NewChoreForm />
-          </Route>
+     
           <Route path="/rooms/:roomId">
             <RoomCard />
           </Route>
