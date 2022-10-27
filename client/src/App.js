@@ -3,11 +3,12 @@ import './App.css';
 import Home from './Home';
 import NavBar from './NavBar';
 import LoginForm from './LoginForm';
-
+import UserChores from './UserChores';
 import RoomCard from './RoomCard';
 import RoomsContainer from './RoomsContainer';
 import SignupForm from './SignupForm';
 import React, {useEffect, useState} from 'react';
+
 
 function App() {
   const [user, setUser] = useState(null);
@@ -46,9 +47,9 @@ function handleLogin(user) {
           <Route path="/rooms/:roomId">
             <RoomCard />
           </Route>
-         {/* <Route path="/user/:userId">*/}
-           {/* <ChoresList />*/}
-         { /*</Route>*/}
+         <Route path="/mychores">
+           <UserChores />
+         </Route>
           <Route path="/rooms">
             <RoomsContainer />
           </Route>

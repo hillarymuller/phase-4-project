@@ -1,4 +1,4 @@
 class ChoreSerializer < ActiveModel::Serializer
-  attributes :id, :name, :starred, :user
+  attributes :id, :name, :starred, :user, :room
   
 end

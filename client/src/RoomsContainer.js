@@ -1,11 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import RoomsList from './RoomsList';
 import NewChoreForm from './NewChoreForm';
+import NewRoomForm from './NewRoomForm';
+
 
 
 function RoomsContainer() {
     const [rooms, setRooms] = useState([]);
     const [loading, setLoading] = useState(true);
+   
 
     useEffect(() => {
         const fetchRooms = async () => {
@@ -22,13 +25,17 @@ function RoomsContainer() {
         fetchRooms();
     }, []);
 
+function onAddRoom(newRoom) {
+    setRooms(...rooms, newRoom);
+}
 if (loading) return <h2>Loading Rooms...</h2>
+
     return (
         <div>
             <h2>Rooms</h2>
             <NewChoreForm rooms={rooms} />
             <RoomsList rooms={rooms} />
-            
+            <NewRoomForm onAddRoom={onAddRoom} />
        </div>
      )
 }

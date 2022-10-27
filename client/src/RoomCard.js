@@ -17,9 +17,23 @@ function RoomCard({ room }) {
         .then(r => r.json())
         .then(r => console.log(r))
     }
+    function handleDelete(chore) {
+        fetch(`/chores/${chore.id}`, {
+            method: 'DELETE',
+        })
+    }
+
 const choreList = chores.map(chore => 
 <li key={chore.id}>
-    {chore.name} -- {chore.user.name} <button onClick={() => handleStar(chore)}>{chore.starred ? "★" : "☆"}</button></li>)
+    {chore.name} -- {chore.user.name} 
+    <button 
+        onClick={() => handleStar(chore)}>
+            {chore.starred ? "★" : "☆"}
+    </button>
+    <button onClick={() => handleDelete(chore)}>
+        Done
+    </button>
+</li>)
     console.log(room);
     return (
         <div>

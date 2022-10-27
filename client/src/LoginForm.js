@@ -31,7 +31,7 @@ const history = useHistory();
                 .then(user => console.log(user))
                 .then(user => handleLogin(user))
                 .catch(error => console.log(error))
-                .then(() => history.push('/rooms'))
+                .then(() => history.push(`/me`))
             }
         });
     }

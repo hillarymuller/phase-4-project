@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
-import {useHistory} from 'react-router-dom';
+//import {useHistory} from 'react-router-dom';
 
 
 function NewChoreForm({ rooms }) {
-    const history = useHistory();
+   // const history = useHistory();
     const [formData, setFormData] = useState({
         name: "",
         starred: false,
@@ -27,7 +27,6 @@ function NewChoreForm({ rooms }) {
         })
         .then(r => r.json())
         .then(data => console.log(data))
-        .then(() => history.push('/user/:id'))
     }
     return (
         <div>

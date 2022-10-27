@@ -12,8 +12,12 @@ function NavBar({user, handleLogout}) {
         {user ? (
         <>
         <NavLink 
-        to='/user/:userId'>
+        to='/mychores'>
             My Chores
+        </NavLink>
+        <NavLink
+        to='/rooms'>
+            All Chores
         </NavLink>
         <button onClick={handleLogout}>
             Logout

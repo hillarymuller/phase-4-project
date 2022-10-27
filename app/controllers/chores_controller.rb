@@ -12,9 +12,18 @@ class ChoresController < ApplicationController
         chore.update!(chore_params)
         render json: chore
     end
+    def user_chores
+        chores = @current_user.chores
+        render json: chores
+    end
+    def destroy
+        chore = Chore.find(params[:id])
+        chore.destroy
+        head :no_content
+    end
     
     private
     def chore_params
-        params.permit(:name, :starred, :room_id, :id)
+        params.permit(:name, :starred, :room_id, :id, :user)
     end
 end

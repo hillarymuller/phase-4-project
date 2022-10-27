@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :rooms
   post "/signup", to: 'users#create'
   get '/me', to: 'users#show'
+  get '/mychores', to: 'chores#user_chores'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   # Routing logic: fallback requests for React Router.
