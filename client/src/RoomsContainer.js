@@ -28,11 +28,14 @@ function RoomsContainer() {
 function onAddRoom(newRoom) {
     setRooms(...rooms, newRoom);
 }
+//function deleteRoom(room) {
+
+//}
 if (loading) return <h2>Loading Rooms...</h2>
 
     return (
         <div>
-            <h2>Rooms</h2>
+            <h1>ALL CHORES</h1>
             <NewChoreForm rooms={rooms} />
             <RoomsList rooms={rooms} />
             <NewRoomForm onAddRoom={onAddRoom} />

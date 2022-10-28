@@ -22,6 +22,18 @@ function UserChores() {
             }),
         })
         .then(r => r.json())
+        //.then(data => console.log(data))
+        .then(data => {
+            console.log(data)
+            const updatedChores = chores.map(chore => {
+                //return console.log(chore)
+               if (chore.id === data.id) {
+                    return data
+                }
+                else { return chore }
+            })
+            setChores(updatedChores)
+        })
     }
     function handleDelete(chore) {
         fetch(`/chores/${chore.id}`, {

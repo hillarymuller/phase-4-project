@@ -30,7 +30,7 @@ function NewChoreForm({ rooms }) {
     }
     return (
         <div>
-            <h2>Add New Chore</h2>
+            <h4>Add New Chore</h4>
             <form onSubmit={handleSubmit}>
                 <label>
                     Chore:

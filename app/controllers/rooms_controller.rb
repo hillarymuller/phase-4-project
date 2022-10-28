@@ -15,6 +15,11 @@ class RoomsController < ApplicationController
         room.update!(room_params)
         render json: room
     end
+    def destroy
+        room = Room.find(params[:id])
+        room.destroy
+        head :no_content
+    end
    private
    def room_params
     params.permit(:id, :name)

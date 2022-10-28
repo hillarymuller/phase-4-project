@@ -25,7 +25,7 @@ function NewRoomForm({ onAddRoom }) {
     }
     return (
         <div>
-            <h2>Add New Room</h2>
+            <h4>Add New Room</h4>
             <form onSubmit={handleSubmit}>
                 <label>
                     Room Name:
