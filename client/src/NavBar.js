@@ -6,8 +6,7 @@ const style = {
     margin: "5% 0 1%",
     padding: "1em",
     textDecoration: "none",
-    color: "#191907",
-    backgroundColor: "white",
+    color: "white",
     fontWeight: "bold",
     verticalAlign: "center",
     fontFamily: "Optima, sans-serif"
@@ -47,7 +46,7 @@ function NavBar({user, handleLogout}) {
         to='/rooms'>
             All Chores
         </NavLink>
-        <button onClick={handleLogout}>
+        <button className="button" onClick={handleLogout}>
             Logout
         </button>
 </> ) : (

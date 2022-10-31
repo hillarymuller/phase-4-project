@@ -38,7 +38,6 @@ if (loading) return <h2>Loading Rooms...</h2>
 
     return (
         <div>
-            <h1>ALL CHORES</h1>
             <NewChoreForm rooms={rooms} addNewChore={addNewChore} />
             <RoomsList rooms={rooms} />
             <NewRoomForm onAddRoom={onAddRoom} />

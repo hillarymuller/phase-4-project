@@ -9,7 +9,7 @@ console.log(rooms);
 const roomCards = rooms.map(room => <RoomCard room={room} key={room.id} />)
     return (
     
-        <div>
+        <div className="cards">
             
             {roomCards}
            

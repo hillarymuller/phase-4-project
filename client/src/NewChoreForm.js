@@ -30,7 +30,7 @@ function NewChoreForm({ rooms, addNewChore }) {
     }
     return (
         <div>
-            <h4>Add New Chore</h4>
+            <h2>Add New Chore</h2>
             <form onSubmit={handleSubmit}>
                 <label>
                     Chore:
@@ -50,7 +50,7 @@ function NewChoreForm({ rooms, addNewChore }) {
                         {rooms.map(room => <option value={room.id} key={room.id}>{room.name}</option>)}
                     </select>
                 </label>
-                <button type="submit">Add</button>
+                <button className="button" type="submit">Add</button>
             </form>
         </div>
      )

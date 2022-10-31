@@ -10,7 +10,7 @@ const choreList = chores.map(chore =>
     console.log(room);
 
     return (
-        <div>
+        <div className="card">
             <h2>{name}</h2>
             
             <ul>{choreList}</ul>

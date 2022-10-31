@@ -25,7 +25,7 @@ function NewRoomForm({ onAddRoom }) {
     }
     return (
         <div>
-            <h4>Add New Room</h4>
+            <h2>Add New Room</h2>
             <form onSubmit={handleSubmit}>
                 <label>
                     Room Name:
@@ -35,7 +35,7 @@ function NewRoomForm({ onAddRoom }) {
                     value={name}
                     />
                 </label>
-                <button type="submit">Add</button>
+                <button className="button" type="submit">Add</button>
             </form>
         </div>
      )

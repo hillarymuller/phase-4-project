@@ -38,10 +38,12 @@ function handleLogin(user) {
   }
 
   return (
-    <div>
-      <h2>Household Chores</h2>
+    <div className="App">
       <Router>
+        <header className="App-header">
+        <h1>HOUSEHOLD CHORES</h1>
         <NavBar user={user} handleLogout={handleLogout} />
+        </header>
         <Switch>
      
           <Route path="/rooms/:roomId">
