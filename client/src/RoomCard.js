@@ -12,7 +12,8 @@ const choreList = chores.map(chore =>
         fetch(`/rooms/${room.id}`, {
             method: 'DELETE',
         })
-        deleteRoom(room);
+        .then(r => r.json())
+        .then(deletedRoom => deleteRoom(deletedRoom))
     }
     return (
         <div>

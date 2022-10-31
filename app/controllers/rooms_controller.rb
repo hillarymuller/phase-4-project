@@ -18,7 +18,7 @@ class RoomsController < ApplicationController
     def destroy
         room = Room.find(params[:id])
         room.destroy
-        head :no_content
+        render json: room
     end
    private
    def room_params

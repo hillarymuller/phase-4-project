@@ -1,5 +1,5 @@
 class ChoresController < ApplicationController
-    skip_before_action :authorize, only: :update
+    #skip_before_action :authorize, only: :update
     def index
         render json: Chore.all
     end
@@ -9,8 +9,12 @@ class ChoresController < ApplicationController
     end
     def update
         chore = Chore.find(params[:id])
+        if @current_user.chores.include?(chore)
         chore.update!(chore_params)
         render json: chore
+        else
+            render json: {error: "Not authorized"}, status: :unauthorized
+        end
     end
     def user_chores
         chores = @current_user.chores
@@ -26,4 +30,5 @@ class ChoresController < ApplicationController
     def chore_params
         params.permit(:name, :starred, :room_id, :id, :user)
     end
+   
 end
