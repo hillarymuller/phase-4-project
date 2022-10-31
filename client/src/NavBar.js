@@ -1,21 +1,49 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 
-
+const style = {
+    width: "60%",
+    margin: "5% 0 1%",
+    padding: "1em",
+    textDecoration: "none",
+    color: "#191907",
+    backgroundColor: "white",
+    fontWeight: "bold",
+    verticalAlign: "center",
+    fontFamily: "Optima, sans-serif"
+}
 function NavBar({user, handleLogout}) {
  return (
     <div>
         <NavLink 
+        exact
+        style={style}
+        activeStyle={{
+            fontWeight: "bolder",
+            color: "#D26901"
+        }}
         to='/'>
             Home
             </NavLink>
         {user ? (
         <>
         <NavLink 
+        exact
+        style={style}
+        activeStyle={{
+            fontWeight: "bolder",
+            color: "#D26901"
+        }}
         to='/mychores'>
             My Chores
         </NavLink>
         <NavLink
+        exact
+        style={style}
+        activeStyle={{
+            fontWeight: "bolder",
+            color: "#D26901"
+        }}
         to='/rooms'>
             All Chores
         </NavLink>
@@ -24,13 +52,34 @@ function NavBar({user, handleLogout}) {
         </button>
 </> ) : (
     <>
-        <NavLink to='/rooms'>
+        <NavLink 
+        exact 
+        style={style}
+        activeStyle={{
+            fontWeight: "bolder",
+            color: "#D26901"
+        }}
+        to='/rooms'>
             All Chores
             </NavLink>
-            <NavLink to="/signup">
+            <NavLink 
+            exact
+            style={style}
+            activeStyle={{
+                fontWeight: "bolder",
+                color: "#D26901"
+            }}
+            to="/signup">
                 Sign Up
             </NavLink>
-            <NavLink to='/login'>
+            <NavLink 
+            exact 
+            style={style}
+            activeStyle={{
+                fontWeight: "bolder",
+                color: "#D26901"
+            }}
+            to='/login'>
                 Log In
             </NavLink>
             </>

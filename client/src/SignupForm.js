@@ -32,7 +32,7 @@ function SignupForm({ handleLogin }) {
         .then(redirect())
     }
     function redirect() {
-        history.push('/rooms');
+        history.push('/me');
     }
 
     return (

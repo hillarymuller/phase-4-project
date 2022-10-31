@@ -28,10 +28,7 @@ function onAddRoom(newRoom) {
     console.log(newRoom);
     fetchRooms();
 }
-function deleteRoom(deletedRoom) {
-    console.log(deletedRoom);
-    fetchRooms();
-}
+
 function addNewChore(chore) {
     console.log(chore);
     fetchRooms();
@@ -43,7 +40,7 @@ if (loading) return <h2>Loading Rooms...</h2>
         <div>
             <h1>ALL CHORES</h1>
             <NewChoreForm rooms={rooms} addNewChore={addNewChore} />
-            <RoomsList rooms={rooms} deleteRoom={deleteRoom} />
+            <RoomsList rooms={rooms} />
             <NewRoomForm onAddRoom={onAddRoom} />
        </div>
      )

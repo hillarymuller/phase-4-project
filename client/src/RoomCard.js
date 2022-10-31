@@ -1,6 +1,6 @@
 import React from 'react';
 
-function RoomCard({ room, deleteRoom }) {
+function RoomCard({ room }) {
     const { name, chores } = room;
 
 const choreList = chores.map(chore => 
@@ -8,17 +8,11 @@ const choreList = chores.map(chore =>
     {chore.name} -- {chore.user.name} 
 </li>)
     console.log(room);
-    function handleDelete(room){
-        fetch(`/rooms/${room.id}`, {
-            method: 'DELETE',
-        })
-        .then(r => r.json())
-        .then(deletedRoom => deleteRoom(deletedRoom))
-    }
+
     return (
         <div>
             <h2>{name}</h2>
-            <button onClick={() => handleDelete(room)}>X</button>
+            
             <ul>{choreList}</ul>
         </div>
        
