@@ -28,16 +28,17 @@ function onAddRoom(newRoom) {
     console.log(newRoom);
     fetchRooms();
 }
-//function deleteRoom(room) {
-
-//}
+function deleteRoom(room) {
+    console.log(room);
+    fetchRooms();
+}
 if (loading) return <h2>Loading Rooms...</h2>
 
     return (
         <div>
             <h1>ALL CHORES</h1>
             <NewChoreForm rooms={rooms} />
-            <RoomsList rooms={rooms} />
+            <RoomsList rooms={rooms} deleteRoom={deleteRoom} />
             <NewRoomForm onAddRoom={onAddRoom} />
        </div>
      )
