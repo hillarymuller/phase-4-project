@@ -28,7 +28,7 @@ function NewRoomForm({ onAddRoom }) {
             <h2>Add New Room</h2>
             <form onSubmit={handleSubmit}>
                 <label>
-                    Room Name:
+                    Room Name: 
                     <input onChange={handleChange}
                     type="text"
                     name="name"

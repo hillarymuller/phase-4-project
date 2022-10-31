@@ -33,7 +33,7 @@ function NewChoreForm({ rooms, addNewChore }) {
             <h2>Add New Chore</h2>
             <form onSubmit={handleSubmit}>
                 <label>
-                    Chore:
+                    Chore: 
                     <input onChange={handleChange}
                     type="text"
                     name="name"
@@ -42,7 +42,7 @@ function NewChoreForm({ rooms, addNewChore }) {
                 </label>
                 <br></br>
                 <label>
-                    Room:
+                    Room: 
                     <select value={formData.roomId} 
                     onChange={handleChange} 
                     name="roomId">

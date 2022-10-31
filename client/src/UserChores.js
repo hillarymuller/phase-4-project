@@ -65,8 +65,8 @@ function UserChores() {
                         <tr key={chore.id}>
                             <td>{chore.name}</td>
                             <td>{chore.room.name}</td>
-                            <td><button onClick={() => handleStar(chore)}>{chore.starred ? "★" : "☆"}</button></td>
-                            <td><button onClick={() => handleDelete(chore)}>All Done</button></td>
+                            <td><button className="tbl-btn" onClick={() => handleStar(chore)}>{chore.starred ? "★" : "☆"}</button></td>
+                            <td><button className="tbl-btn" onClick={() => handleDelete(chore)}>All Done</button></td>
                         </tr>
                     )
                 })}
