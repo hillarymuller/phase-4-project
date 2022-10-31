@@ -39,7 +39,14 @@ function UserChores() {
         fetch(`/chores/${chore.id}`, {
             method: 'DELETE',
         })
-    }
+        .then(r => r.json())
+        .then(deletedChore => {
+            const updatedChores = chores.filter(chore => {
+            return chore.id !== deletedChore.id
+        })
+        setChores(updatedChores);
+    })
+}
     return (
         <div>
         <h1>My Chores</h1>

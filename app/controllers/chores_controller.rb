@@ -19,7 +19,7 @@ class ChoresController < ApplicationController
     def destroy
         chore = Chore.find(params[:id])
         chore.destroy
-        head :no_content
+        render json: chore
     end
     
     private

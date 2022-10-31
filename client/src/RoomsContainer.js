@@ -9,24 +9,24 @@ function RoomsContainer() {
     const [rooms, setRooms] = useState([]);
     const [loading, setLoading] = useState(true);
    
-
-    useEffect(() => {
-        const fetchRooms = async () => {
-            try {
-                const resp = await fetch('/rooms')
-                const data = await resp.json()
-                setRooms(data)
-                setLoading(false)
-                console.log(data)
-            } catch (error) {
-                console.log(error)
-            }
+    const fetchRooms = async () => {
+        try {
+            const resp = await fetch('/rooms');
+            const data = await resp.json();
+            setRooms(data);
+            setLoading(false);
+            console.log(data);
+        } catch (error) {
+            console.log(error);
         }
+    }
+    useEffect(() => {
         fetchRooms();
     }, []);
 
 function onAddRoom(newRoom) {
-    setRooms(...rooms, newRoom);
+    console.log(newRoom);
+    fetchRooms();
 }
 //function deleteRoom(room) {
 

@@ -28,8 +28,9 @@ const history = useHistory();
         .then(resp => {
             if (resp.ok) {
                 resp.json()
-                .then(user => console.log(user))
-                .then(user => handleLogin(user))
+                .then(user => {console.log(user);
+                handleLogin(user)})
+                //.then(user => handleLogin(user))
                 .catch(error => console.log(error))
                 .then(() => history.push(`/me`))
             }
