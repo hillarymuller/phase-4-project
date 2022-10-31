@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { useHistory } from 'react-router-dom';
 
 function SignupForm({ handleLogin }) {
     const [formData, setFormData] = useState({
@@ -7,6 +8,8 @@ function SignupForm({ handleLogin }) {
         password: "",
         passwordConfirmation: ""
     });
+    const history = useHistory();
+
     function handleChange(e) {
         setFormData({...formData, [e.target.name]: e.target.value,});
     }
@@ -25,8 +28,11 @@ function SignupForm({ handleLogin }) {
             })
         })
         .then(r => r.json())
-        .then(user => console.log(user))
         .then(user => handleLogin(user))
+        .then(redirect())
+    }
+    function redirect() {
+        history.push('/rooms');
     }
 
     return (
