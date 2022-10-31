@@ -22,8 +22,12 @@ class ChoresController < ApplicationController
     end
     def destroy
         chore = Chore.find(params[:id])
+        if @current_user.chores.include?(chore)
         chore.destroy
         render json: chore
+        else
+            render json: {error: "Not authorized"}, status: :unauthorized
+        end
     end
     
     private
