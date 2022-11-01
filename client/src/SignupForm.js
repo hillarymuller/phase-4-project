@@ -8,6 +8,7 @@ function SignupForm({ handleLogin }) {
         password: "",
         passwordConfirmation: ""
     });
+    const [errors, setErrors] = useState([]);
     const history = useHistory();
 
     function handleChange(e) {
@@ -27,9 +28,15 @@ function SignupForm({ handleLogin }) {
                 "password_confirmation": formData.passwordConfirmation
             })
         })
-        .then(r => r.json())
-        .then(user => handleLogin(user))
-        .then(redirect())
+        .then(r => {
+            if (r.ok) {
+                r.json()
+                .then(user => handleLogin(user))
+            .then(redirect());
+            } else {
+                r.json().then(err => setErrors(err.error));
+            }
+        });
     }
     function redirect() {
         history.push('/me');
@@ -38,6 +45,10 @@ function SignupForm({ handleLogin }) {
     return (
         <div>
             <form onSubmit={handleSubmit}>
+                {errors && (
+                    errors.map(error => {
+                    return <h2 key={error}>{error}</h2>}
+                ))}
                 <label>
                     Name:
                     <input onChange={handleChange}
