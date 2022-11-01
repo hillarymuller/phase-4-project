@@ -1,4 +1,5 @@
 class RoomsController < ApplicationController
+    skip_before_action :authorize
     def index
         rooms = Room.all
         render json: rooms
@@ -7,7 +8,7 @@ class RoomsController < ApplicationController
         room = Room.find(params[:id])
     end
     def create
-        room = Room.create(room_params)
+        room = Room.create!(room_params)
         render json: Room.all
     end
     def update

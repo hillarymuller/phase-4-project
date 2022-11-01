@@ -60,3 +60,7 @@ table {
   padding: 6px 24px;
   font-size: 16px;
 }
+.error {
+  color: white;
+  background-color:  #D26901;
+}

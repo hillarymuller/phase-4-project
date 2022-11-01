@@ -44,7 +44,7 @@ const history = useHistory();
  return (
     <form onSubmit={handleSubmit}>
         {error && (
-            <h2>{error}</h2>
+            <h2 className="error">{error}</h2>
         )}
         <label>
             Username:

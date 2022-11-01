@@ -5,6 +5,7 @@ import React, {useState} from 'react';
 function NewRoomForm({ onAddRoom }) {
    // const history = useHistory();
     const [name, setName] = useState("");
+    const [errors, setErrors] = useState([]);
     function handleChange(e) {
         setName(e.target.value);
     }
@@ -19,14 +20,25 @@ function NewRoomForm({ onAddRoom }) {
                 "name": name
             })
         })
-        .then(r => r.json())
-        .then(data => onAddRoom(data))
-        
+        .then(r => {
+            if (r.ok) {
+                r.json()
+            .then(data => onAddRoom(data))
+            } else {
+                r.json()
+                .then(err => setErrors(err.error))
+            }
+        })
     }
     return (
         <div>
             <h2>Add New Room</h2>
             <form onSubmit={handleSubmit}>
+                {errors && (
+                    errors.map(error => {
+                    return <h2 key={error} className="error">{error}</h2>
+                    })
+                )}
                 <label>
                     Room Name: 
                     <input onChange={handleChange}

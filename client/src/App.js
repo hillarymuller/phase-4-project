@@ -8,32 +8,40 @@ import RoomCard from './RoomCard';
 import RoomsContainer from './RoomsContainer';
 import SignupForm from './SignupForm';
 import React, {useEffect, useState} from 'react';
+//import {useHistory} from 'react-router-dom';
 
 
 function App() {
   const [user, setUser] = useState(null);
+  //const history = useHistory();
 
+const fetchUser = () => {
+  fetch('/me', {
+    headers: {
+      "accepts": "application/json"
+    }
+  })
+  .then(resp => {
+    if (resp.ok) {
+      resp.json()
+      .then(user => setUser(user));
+    }
+    else {
+      console.log("No current user")
+    }
+  });
+}
   useEffect(() => {
-    fetch('/me', {
-      headers: {
-        "accepts": "application/json"
-      }
-    })
-    .then(resp => {
-      if (resp.ok) {
-        resp.json()
-        .then(user => setUser(user));
-      }
-      else {
-        console.log("No current user")
-      }
-    });
+    fetchUser();
   },[]);
 
 function handleLogin(user) {
   setUser(user);
 }
   function handleLogout() {
+    fetch('/logout', {
+      method: 'DELETE',
+    })
     setUser(null);
   }
 

@@ -9,6 +9,7 @@ function NewChoreForm({ rooms, addNewChore }) {
         starred: false,
         roomId: 0
     });
+    const [error, setError] = useState();
     function handleChange(e) {
         setFormData({...formData, [e.target.name]: e.target.value,});
     }
@@ -25,13 +26,24 @@ function NewChoreForm({ rooms, addNewChore }) {
                 "room_id": formData.roomId
             })
         })
-        .then(r => r.json())
-        .then(data => addNewChore(data))
-    }
+        .then(r => {
+            if (r.ok) {
+                r.json()
+            .then(data => addNewChore(data))
+            }
+            else {
+                r.json()
+                .then(err => setError(err.error))
+            }
+    })
+}
     return (
         <div>
             <h2>Add New Chore</h2>
             <form onSubmit={handleSubmit}>
+                {error && (
+                  <h2 className="error">{error}</h2>
+                )}
                 <label>
                     Chore: 
                     <input onChange={handleChange}

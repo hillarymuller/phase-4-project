@@ -47,7 +47,7 @@ function SignupForm({ handleLogin }) {
             <form onSubmit={handleSubmit}>
                 {errors && (
                     errors.map(error => {
-                    return <h2 key={error}>{error}</h2>}
+                    return <h2 className="error" key={error}>{error}</h2>}
                 ))}
                 <label>
                     Name:
