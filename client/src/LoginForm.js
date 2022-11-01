@@ -6,6 +6,7 @@ const [formData, setFormData] = useState({
     username: "",
     password: ""
 });
+const [error, setError] = useState();
 const history = useHistory();
 
     function handleChange(e){
@@ -31,14 +32,20 @@ const history = useHistory();
                 .then(user => {console.log(user);
                 handleLogin(user)})
                 //.then(user => handleLogin(user))
-                .catch(error => console.log(error))
                 .then(() => history.push(`/me`))
+            }
+            else {
+                resp.json()
+                .then(err => setError(err.error));
             }
         });
     }
 
  return (
     <form onSubmit={handleSubmit}>
+        {error && (
+            <h2>{error}</h2>
+        )}
         <label>
             Username:
             <input onChange={handleChange}
