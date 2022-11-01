@@ -5,7 +5,8 @@ import React, { useEffect, useState } from 'react';
 function UserChores() {
     const [chores, setChores] = useState([]);
     const [editMode, setEditMode] = useState(false);
-    const [name, setName] = useState()
+    const [name, setName] = useState();
+    const [id, setId] = useState();
 
     useEffect(() => {
         fetch(`/mychores`)
@@ -52,23 +53,49 @@ function UserChores() {
 function handleEdit(chore) {
     setEditMode(true);
     console.log(chore)
+    setId(chore.id);
     setName(chore.name)
 }
 function handleChange(e) {
     setName(e.target.value);
+    console.log(name)
 }
 function handleSubmit(e) {
-    console.log(e);
+    e.preventDefault();
+    fetch(`/chores/${e.target.name.id}`, {
+        method: 'PATCH',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            name: e.target.name.value,
+        }),
+    })
+        .then(r => r.json())
+        //.then(data => console.log(data))
+        .then(data => {
+            console.log(data)
+            const updatedChores = chores.map(chore => {
+                //return console.log(chore)
+               if (chore.id === data.id) {
+                    return data
+                }
+                else { return chore }
+            })
+            setChores(updatedChores)
+    })
+    console.log(e.target.name.id);
     setEditMode(false);
 }
     return (
     
         <div>
             {editMode ? (
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={(e) => handleSubmit(e)}>
                     <label>
                         Chore: 
                         <input onChange={handleChange}
+                        id={id}
                         type="text"
                         name="name"
                         value={name}
