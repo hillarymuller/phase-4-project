@@ -7,6 +7,7 @@ function UserChores() {
     const [editMode, setEditMode] = useState(false);
     const [name, setName] = useState();
     const [id, setId] = useState();
+    const [errors, setErrors] = useState([]);
 
     useEffect(() => {
         fetch(`/mychores`)
@@ -26,7 +27,7 @@ function UserChores() {
         })
         .then(r => r.json())
         //.then(data => console.log(data))
-        .then(data => {
+            .then(data => {
             console.log(data)
             const updatedChores = chores.map(chore => {
                 //return console.log(chore)
@@ -36,8 +37,10 @@ function UserChores() {
                 else { return chore }
             })
             setChores(updatedChores)
-        })
-    }
+            })
+    } 
+    
+    
     function handleDelete(chore) {
         fetch(`/chores/${chore.id}`, {
             method: 'DELETE',
@@ -52,6 +55,7 @@ function UserChores() {
 }
 function handleEdit(chore) {
     setEditMode(true);
+    setErrors([]);
     console.log(chore)
     setId(chore.id);
     setName(chore.name)
@@ -71,9 +75,11 @@ function handleSubmit(e) {
             name: e.target.name.value,
         }),
     })
-        .then(r => r.json())
+        .then(r => {
+            if (r.ok) {
+                r.json()
         //.then(data => console.log(data))
-        .then(data => {
+            .then(data => {
             console.log(data)
             const updatedChores = chores.map(chore => {
                 //return console.log(chore)
@@ -82,16 +88,28 @@ function handleSubmit(e) {
                 }
                 else { return chore }
             })
-            setChores(updatedChores)
-    })
+            setChores(updatedChores);
+            setEditMode(false);
+            })
+        } else {
+            r.json()
+            .then(err => setErrors(err.error))
+        }
+        
+        })
     console.log(e.target.name.id);
-    setEditMode(false);
+    
 }
     return (
     
         <div>
             {editMode ? (
                 <form onSubmit={(e) => handleSubmit(e)}>
+                      {errors && (
+                        errors.map(error => {
+                            return <h2 key={error} className="error">{error}</h2>
+                        })
+                    )}
                     <label>
                         Chore: 
                         <input onChange={handleChange}
@@ -106,6 +124,7 @@ function handleSubmit(e) {
             ) : (
                 <>
         <h1>My Chores</h1>
+      
         <table>
             <thead>
                 <tr>
@@ -113,6 +132,7 @@ function handleSubmit(e) {
                     <th>Room</th>
                     <th>Prioritize</th>
                     <th>Delete Chore</th>
+                    <th>Edit Chore</th>
                 </tr>
             </thead>
             <tbody>
