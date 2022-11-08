@@ -57,7 +57,7 @@ function handleLogin(user) {
           <Route path="/rooms/:roomId">
             <RoomCard />
           </Route>
-         <Route path="/mychores">
+         <Route path="/chores">
            <UserChores />
          </Route>
           <Route path="/rooms">

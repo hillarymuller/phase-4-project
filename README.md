@@ -1,9 +1,22 @@
-# Project Template: React/Rails API
+# HOUSEHOLD CHORES
 
 ## Description
 
-This project is scaffolded so that you can build a React frontend and Rails
-backend together, and easily deploy them to Heroku.
+This application is my Phase 4 project for Flatiron School. The front end, found in the client folder, is a React app, and the back end uses Ruby on Rails in API mode.
+
+## App Features
+- users can sign up to create an account with a secure password
+- users can log in & log out
+- users can view a list of all household chores, sorted by room
+- users can add a new room
+- users can add a new chore, star a chore, edit a chore's name, or delete a chore for themselves
+- users can view a list of only the chores that belong to them
+
+## Possible Future Features
+- users with admin access could delete rooms & add/edit/delete chores for other users (think parents delegating things to their kids)
+- chores could have priority levels set by admins
+- users could sort their chores by room or by priority
+- a fun effect could be set for when a user marks a chore as done
 
 ## Requirements
 
@@ -15,114 +28,21 @@ backend together, and easily deploy them to Heroku.
 See Environment Setup below for instructions on installing these tools if you
 don't already have them.
 
-## Setup
-
-Start by **cloning** (not forking) the project template repository and removing
-the remote:
-
-```console
-$ git clone git@github.com:learn-co-curriculum/project-template-react-rails-api.git your-project-name
-$ cd your-project-name
-$ git remote rm origin
-```
-
-Then, [create a new remote repository][create repo] on GitHub. Head to
-[github.com](https://github.com) and click the **+** icon in the top-right
-corner and follow the steps to create a new repository. **Important**: don't
-check any of the options such as 'Add a README file', 'Add a .gitignore file',
-etc — since you're importing an existing repository, creating any of those files
-on GitHub will cause issues.
-
-[create repo]: https://docs.github.com/en/github/importing-your-projects-to-github/importing-source-code-to-github/adding-an-existing-project-to-github-using-the-command-line#adding-a-project-to-github-without-github-cli
-
-If you're working with a partner,
-[add them as a collaborator][add collaborator] on GitHub. From your repo on
-GitHub, go to Settings > Manage Access > Invite a collaborator and enter your
-partner's username. Once your partner has access, they should git **clone** (not
-fork) the repository.
-
-[add collaborator]: https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-user-account/managing-access-to-your-personal-repositories/inviting-collaborators-to-a-personal-repository
-
-Finally, connect the GitHub remote repository to your local repository and push
-up your code:
-
-```console
-$ git remote add origin git@github.com:your-username/your-project-name.git
-$ git push -u origin main
-```
-
-When you're ready to start building your project, run:
-
-```sh
-bundle install
-rails db:create
-npm install --prefix client
-```
-
-You can use the following commands to run the application:
-
-- `rails s`: run the backend on [http://localhost:3000](http://localhost:3000)
-- `npm start --prefix client`: run the frontend on
+## Installation
+1. Fork & clone the repo
+2. Run bundle install to install dependencies
+3. Run rails db:create
+4. You can use the following commands to run the application:
+  - `rails s`: run the backend on [http://localhost:3000](http://localhost:3000)
+  - `npm start --prefix client`: run the frontend on
   [http://localhost:4000](http://localhost:4000)
 
-Make sure to also update this README to include documentation about
-your project. Here's a list of some [awesome readmes][] for inspiration.
-
-[awesome readmes]: https://github.com/matiassingers/awesome-readme
-
-## Deploying
-
-This application has all the starter code needed to help you deploy your
-application to Heroku. It's recommended to deploy your project early and push up
-changes often to ensure that your code works equally well in production and
-development environments.
-
-If you've already set up your environment to deploy to Heroku, you can run the
-commands below to deploy your application. If not, make sure to check out the
-Environment Setup section below.
-
-To deploy, first log in to your Heroku account using the Heroku CLI:
-
-```sh
-heroku login
-```
-
-Create the new Heroku app:
-
-```sh
-heroku create my-app-name
-```
-
-Add the buildpacks for Heroku to build the React app on Node and run the Rails
-app on Ruby:
-
-```sh
-heroku buildpacks:add heroku/nodejs --index 1
-heroku buildpacks:add heroku/ruby --index 2
-```
-
-To deploy, commit your code and push the changes to Heroku:
-
-```sh
-git add .
-git commit -m 'Commit message'
-git push heroku main
-```
-
-> Note: depending on your Git configuration, your default branch might be named
-> `master` or `main`. You can verify which by running
-> `git branch --show-current`. If it's `master`, you'll need to run
-> `git push heroku master` instead.
-
-Any time you have changes to deploy, just make sure your changes are committed
-on the main branch of your repo, and push those changes to Heroku to deploy
-them.
-
-You can view your deployed app with:
-
-```sh
-heroku open
-```
+## Contributing
+1. Fork the repo
+2. Create your own branch: git checkout -b my-new-branch
+3. Commit your changes: git commit -am "add some feature"
+4. Push your branch: git push origin my-new-branch
+5. Submit a pull request
 
 ## Environment Setup
 
@@ -306,22 +226,13 @@ troubleshoot:
   account. Check [this video](https://www.youtube.com/watch?v=bQC5izDzOgE) for
   one possible fix.
 
-- If your app failed to deploy at the build stage, make sure your local
-  environment is set up correctly by following the steps at the beginning of
-  this lesson. Check that you have the latest versions of Ruby and Bundler, and
-  ensure that Postgresql was installed successfully.
+## License
+MIT License
 
-- If you deployed successfully, but you ran into issues when you visited the
-  site, make sure you migrated and seeded the database. Also, make sure that
-  your application works locally and try to debug any issues on your local
-  machine before re-deploying. You can also check the logs on the server by
-  running `heroku logs`.
+Copyright (c) 2022 Hillary Muller
 
-For additional support, check out these guides on Heroku:
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-- [Deploying a Rails 6 App to Heroku][heroku rails deploying guide]
-- [Rails Troubleshooting on Heroku][troubleshooting guide on heroku]
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-[postgres downloads page]: https://postgresapp.com/downloads.html
-[heroku rails deploying guide]: https://devcenter.heroku.com/articles/getting-started-with-rails6
-[troubleshooting guide on heroku]: https://devcenter.heroku.com/articles/getting-started-with-rails6#troubleshooting
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

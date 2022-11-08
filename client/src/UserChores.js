@@ -6,11 +6,11 @@ function UserChores() {
     const [chores, setChores] = useState([]);
     const [editMode, setEditMode] = useState(false);
     const [name, setName] = useState();
-    const [id, setId] = useState();
+    const [editId, setEditId] = useState();
     const [errors, setErrors] = useState([]);
 
     useEffect(() => {
-        fetch(`/mychores`)
+        fetch(`/chores`)
         .then(r => r.json())
         .then(data => setChores(data))
     }, []);
@@ -41,23 +41,27 @@ function UserChores() {
     } 
     
     
-    function handleDelete(chore) {
-        fetch(`/chores/${chore.id}`, {
-            method: 'DELETE',
+    function handleDelete(id) {
+        
+        fetch(`/chores/${id}`, {
+           method: 'DELETE'
         })
         .then(r => r.json())
         .then(deletedChore => {
+            console.log(deletedChore);
             const updatedChores = chores.filter(chore => {
             return chore.id !== deletedChore.id
         })
         setChores(updatedChores);
+        console.log(updatedChores);
     })
+    .catch(err => console.log(err));
 }
 function handleEdit(chore) {
     setEditMode(true);
     setErrors([]);
     console.log(chore)
-    setId(chore.id);
+    setEditId(chore.id);
     setName(chore.name)
 }
 function handleChange(e) {
@@ -113,7 +117,7 @@ function handleSubmit(e) {
                     <label>
                         Chore: 
                         <input onChange={handleChange}
-                        id={id}
+                        id={editId}
                         type="text"
                         name="name"
                         value={name}
@@ -142,7 +146,7 @@ function handleSubmit(e) {
                             <td>{chore.name}</td>
                             <td>{chore.room.name}</td>
                             <td><button className="tbl-btn" onClick={() => handleStar(chore)}>{chore.starred ? "★" : "☆"}</button></td>
-                            <td><button className="tbl-btn" onClick={() => handleDelete(chore)}>Done</button></td>
+                            <td><button className="tbl-btn" onClick={() => handleDelete(chore.id)}>Done</button></td>
                             <td><button className="tbl-btn" onClick={() => handleEdit(chore)}>Edit</button></td>
                         </tr>
                     )

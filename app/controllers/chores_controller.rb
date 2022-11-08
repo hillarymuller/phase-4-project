@@ -1,8 +1,9 @@
 class ChoresController < ApplicationController
-    #skip_before_action :authorize, only: :update
+    
     before_action :find_chore, only: [:update, :destroy]
     def index
-        render json: Chore.all
+        chores = @current_user.chores
+        render json: chores
     end
     def create
         chore = @current_user.chores.create!(chore_params)
@@ -16,14 +17,15 @@ class ChoresController < ApplicationController
             render json: {error: @chore.errors.full_messages}, status: :unprocessable_entity
         end
     end
-    def user_chores
-        chores = @current_user.chores
-        render json: chores
-    end
+   
     def destroy
         if @current_user.chores.include?(@chore)
-        @chore.destroy
-        render json: @chore
+            
+         if @chore.delete
+                render json: @chore
+         else
+            render json: {error: "Did not delete"}, status: :not_found
+         end
         else
             render json: {error: "Not authorized"}, status: :unauthorized
         end
@@ -31,7 +33,7 @@ class ChoresController < ApplicationController
     
     private
     def chore_params
-        params.permit(:name, :starred, :room_id, :id, :user)
+        params.permit(:name, :starred, :id, :room_id, :user_id)
     end
     def find_chore
         @chore = Chore.find(params[:id])

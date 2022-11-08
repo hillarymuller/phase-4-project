@@ -33,7 +33,7 @@ function NavBar({user, handleLogout}) {
             fontWeight: "bolder",
             color: "#D26901"
         }}
-        to='/mychores'>
+        to='/chores'>
             My Chores
         </NavLink>
         <NavLink
