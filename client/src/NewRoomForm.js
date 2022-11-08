@@ -34,11 +34,11 @@ function NewRoomForm({ onAddRoom }) {
         <div>
             <h2>Add New Room</h2>
             <form onSubmit={handleSubmit}>
-                {errors && (
+                {errors ? (
                     errors.map(error => {
                     return <h2 key={error} className="error">{error}</h2>
                     })
-                )}
+                ) : null}
                 <label>
                     Room Name: 
                     <input onChange={handleChange}

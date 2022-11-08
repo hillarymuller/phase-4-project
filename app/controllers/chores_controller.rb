@@ -1,5 +1,5 @@
 class ChoresController < ApplicationController
-    
+   
     before_action :find_chore, only: [:update, :destroy]
     def index
         chores = @current_user.chores
@@ -40,3 +40,4 @@ class ChoresController < ApplicationController
     end
    
 end
+

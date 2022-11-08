@@ -45,10 +45,10 @@ function SignupForm({ handleLogin }) {
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                {errors && (
+                {errors ? (
                     errors.map(error => {
                     return <h2 className="error" key={error}>{error}</h2>}
-                ))}
+                )) : null}
                 <label>
                     Name:
                     <input onChange={handleChange}

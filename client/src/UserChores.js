@@ -109,11 +109,11 @@ function handleSubmit(e) {
         <div>
             {editMode ? (
                 <form onSubmit={(e) => handleSubmit(e)}>
-                      {errors && (
+                      {errors ? (
                         errors.map(error => {
                             return <h2 key={error} className="error">{error}</h2>
                         })
-                    )}
+                    ) : null}
                     <label>
                         Chore: 
                         <input onChange={handleChange}

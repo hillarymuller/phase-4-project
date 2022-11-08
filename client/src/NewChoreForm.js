@@ -9,6 +9,7 @@ function NewChoreForm({ rooms, addNewChore }) {
         starred: false,
         roomId: 0
     });
+
     const [error, setError] = useState();
     function handleChange(e) {
         setFormData({...formData, [e.target.name]: e.target.value,});
@@ -41,9 +42,9 @@ function NewChoreForm({ rooms, addNewChore }) {
         <div>
             <h2>Add New Chore</h2>
             <form onSubmit={handleSubmit}>
-                {error && (
+                {error ? (
                   <h2 className="error">{error}</h2>
-                )}
+                ) : null}
                 <label>
                     Chore: 
                     <input onChange={handleChange}

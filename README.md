@@ -31,7 +31,7 @@ don't already have them.
 ## Installation
 1. Fork & clone the repo
 2. Run bundle install to install dependencies
-3. Run rails db:create
+3. Run rails db:create db:migrate
 4. You can use the following commands to run the application:
   - `rails s`: run the backend on [http://localhost:3000](http://localhost:3000)
   - `npm start --prefix client`: run the frontend on

@@ -43,9 +43,9 @@ const history = useHistory();
 
  return (
     <form onSubmit={handleSubmit}>
-        {error && (
+        {error ? (
             <h2 className="error">{error}</h2>
-        )}
+        ) : null}
         <label>
             Username:
             <input onChange={handleChange}
