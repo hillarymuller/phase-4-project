@@ -29,6 +29,7 @@ function NewRoomForm({ onAddRoom }) {
                 .then(err => setErrors(err.error))
             }
         })
+        setName("");
     }
     return (
         <div>

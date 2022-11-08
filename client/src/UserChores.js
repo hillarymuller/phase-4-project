@@ -14,7 +14,16 @@ function UserChores() {
         .then(r => r.json())
         .then(data => setChores(data))
     }, []);
-
+    function updateChores(data) {
+        const updatedChores = chores.map(chore => {
+            //return console.log(chore)
+           if (chore.id === data.id) {
+                return data
+            }
+            else { return chore }
+        })
+        setChores(updatedChores)
+    }
     function handleStar(chore) {
         fetch(`/chores/${chore.id}`, {
             method: 'PATCH',
@@ -29,14 +38,7 @@ function UserChores() {
         //.then(data => console.log(data))
             .then(data => {
             console.log(data)
-            const updatedChores = chores.map(chore => {
-                //return console.log(chore)
-               if (chore.id === data.id) {
-                    return data
-                }
-                else { return chore }
-            })
-            setChores(updatedChores)
+           updateChores(data)
             })
     } 
     
@@ -62,7 +64,7 @@ function handleEdit(chore) {
     setErrors([]);
     console.log(chore)
     setEditId(chore.id);
-    setName(chore.name)
+    setName(chore.name);
 }
 function handleChange(e) {
     setName(e.target.value);
@@ -85,14 +87,7 @@ function handleSubmit(e) {
         //.then(data => console.log(data))
             .then(data => {
             console.log(data)
-            const updatedChores = chores.map(chore => {
-                //return console.log(chore)
-               if (chore.id === data.id) {
-                    return data
-                }
-                else { return chore }
-            })
-            setChores(updatedChores);
+            updateChores(data)
             setEditMode(false);
             })
         } else {

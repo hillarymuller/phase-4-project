@@ -37,6 +37,11 @@ function NewChoreForm({ rooms, addNewChore }) {
                 .then(err => setError(err.error))
             }
     })
+    setFormData({
+        name: "",
+        starred: false,
+        roomId: 0
+    });
 }
     return (
         <div>
