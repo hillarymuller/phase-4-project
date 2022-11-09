@@ -1,9 +1,12 @@
 class ChoresController < ApplicationController
    
-    before_action :find_chore, only: [:update, :destroy]
+    before_action :find_chore, except: [:index, :create]
     def index
         chores = @current_user.chores
         render json: chores
+    end
+    def show
+        render json: @chore
     end
     def create
         chore = @current_user.chores.create!(chore_params)

@@ -8,6 +8,8 @@ import RoomCard from './RoomCard';
 import RoomsContainer from './RoomsContainer';
 import SignupForm from './SignupForm';
 import React, {useEffect, useState} from 'react';
+import ChoreCard from './ChoreCard';
+
 //import {useHistory} from 'react-router-dom';
 
 
@@ -56,6 +58,9 @@ function handleLogin(user) {
      
           <Route path="/rooms/:roomId">
             <RoomCard />
+          </Route>
+          <Route path="/chores/:id">
+            <ChoreCard />
           </Route>
          <Route path="/chores">
            <UserChores />

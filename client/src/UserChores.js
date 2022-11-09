@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
-
+import { Link } from 'react-router-dom';
 
 function UserChores() {
     const [chores, setChores] = useState([]);
@@ -132,6 +131,7 @@ function handleSubmit(e) {
                     <th>Prioritize</th>
                     <th>Delete Chore</th>
                     <th>Edit Chore</th>
+                    <th>Focus</th>
                 </tr>
             </thead>
             <tbody>
@@ -143,6 +143,7 @@ function handleSubmit(e) {
                             <td><button className="tbl-btn" onClick={() => handleStar(chore)}>{chore.starred ? "★" : "☆"}</button></td>
                             <td><button className="tbl-btn" onClick={() => handleDelete(chore.id)}>Done</button></td>
                             <td><button className="tbl-btn" onClick={() => handleEdit(chore)}>Edit</button></td>
+                            <td><Link className="App-link" to={`/chores/${chore.id}`}>View Chore</Link></td>
                         </tr>
                     )
                 })}
