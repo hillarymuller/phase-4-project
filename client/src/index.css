@@ -64,3 +64,6 @@ table {
   color: white;
   background-color:  #D26901;
 }
+.password {
+  -webkit-text-security: disc;
+}

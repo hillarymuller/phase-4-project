@@ -57,7 +57,8 @@ const history = useHistory();
         <label>
             Password:
             <input onChange={handleChange}
-            type="text"
+            className="password"
+            type="password"
             name="password"
             value={formData.password}
             />
