@@ -8,6 +8,7 @@ function NewRoomForm({ onAddRoom }) {
     const [errors, setErrors] = useState([]);
     function handleChange(e) {
         setName(e.target.value);
+        setErrors([]);
     }
     function handleSubmit(e) {
        e.preventDefault();

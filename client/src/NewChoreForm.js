@@ -10,9 +10,10 @@ function NewChoreForm({ rooms, addNewChore }) {
         roomId: 0
     });
 
-    const [error, setError] = useState();
+    const [error, setError] = useState(null);
     function handleChange(e) {
         setFormData({...formData, [e.target.name]: e.target.value,});
+        setError(null);
     }
     function handleSubmit(e) {
         e.preventDefault();

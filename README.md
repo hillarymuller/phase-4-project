@@ -4,6 +4,8 @@
 
 This application is my Phase 4 project for Flatiron School. The front end, found in the client folder, is a React app, and the back end uses Ruby on Rails in API mode.
 
+Check it out here: https://youtu.be/IEabyY6hnlY
+
 ## App Features
 - users can sign up to create an account with a secure password
 - users can log in & log out
@@ -14,6 +16,7 @@ This application is my Phase 4 project for Flatiron School. The front end, found
 
 ## Possible Future Features
 - users with admin access could delete rooms & add/edit/delete chores for other users (think parents delegating things to their kids)
+- admins could add notes to individual chores
 - chores could have priority levels set by admins
 - users could sort their chores by room or by priority
 - a fun effect could be set for when a user marks a chore as done
