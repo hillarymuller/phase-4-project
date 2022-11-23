@@ -16,6 +16,12 @@ class RoomsController < ApplicationController
         room.update!(room_params)
         render json: room
     end
+    def starred_rooms
+       rooms = Room.all
+       #find rooms where .chores.select{|c| c.starred} returns []
+       priority = rooms.select {|r| !r.starred.empty?}
+       render json: priority
+    end
    private
    def room_params
     params.permit(:id, :name)

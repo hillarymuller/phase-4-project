@@ -7,12 +7,22 @@ function UserChores() {
     const [name, setName] = useState();
     const [editId, setEditId] = useState();
     const [errors, setErrors] = useState([]);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         fetch(`/chores`)
-        .then(r => r.json())
-        .then(data => setChores(data))
+        .then(r => {
+            if (r.ok) {
+                r.json()
+            .then(data => setChores(data))
+            } else {
+                r.json()
+                .then(err => setError(err.error))
+            }
+    })
     }, []);
+
+
     function updateChores(data) {
         const updatedChores = chores.map(chore => {
             //return console.log(chore)
@@ -122,7 +132,10 @@ function handleSubmit(e) {
             ) : (
                 <>
         <h1>My Chores</h1>
-      
+        {error ? (
+                        <h2 className="error">{error}</h2>
+                        )
+                     : null}
         <table>
             <thead>
                 <tr>

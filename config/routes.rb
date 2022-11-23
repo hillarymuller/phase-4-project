@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :chores 
   resources :rooms, only: [:index, :create]
+  #write custom route
+  get "/starredrooms", to: 'rooms#starred_rooms'
   post "/signup", to: 'users#create'
   get '/me', to: 'users#show'
   post '/login', to: 'sessions#create'
